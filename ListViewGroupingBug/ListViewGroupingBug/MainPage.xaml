@@ -6,7 +6,11 @@
              x:Class="ListViewGroupingBug.MainPage">
   <ContentPage.Content>
     <StackLayout>
-      <Label Text="Grouped"></Label>
+      <Label 
+        Margin="5,25,5,0"
+        Text="Select an item from this Grouped list, then click 'Remove'">
+        
+      </Label>
       
              <ListView HeightRequest="350" 
                 BackgroundColor="LightGray" 
@@ -32,7 +36,8 @@
         </ListView.ItemTemplate>
 
       </ListView>
-      <Label Text="Ungrouped"></Label>
+      
+      <Label Margin="5,25,5,0"  Text="This ungrouped list will not produce the bug."></Label>
       <ListView HeightRequest="350" 
                 BackgroundColor="Gray" 
                 ItemsSource="{Binding Items}"

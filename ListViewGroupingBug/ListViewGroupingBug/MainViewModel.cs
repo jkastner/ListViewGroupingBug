@@ -47,7 +47,7 @@ namespace ListViewGroupingBug
     {
       var asItem = obj as SomeItem;
       var match = this.ItemsGrouped.FirstOrDefault(x => x.Contains(asItem));
-      match.Remove(asItem);
+      match?.Remove(asItem);
     }
 
     private void RunRemove(object obj)
