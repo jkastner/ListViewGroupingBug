@@ -1,0 +1,62 @@
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ListViewGroupingBug"
+             x:Name="TheMainPage"
+             x:Class="ListViewGroupingBug.MainPage">
+  <ContentPage.Content>
+    <StackLayout>
+      <Label Text="Grouped"></Label>
+      
+             <ListView HeightRequest="350" 
+                BackgroundColor="LightGray" 
+                ItemsSource="{Binding ItemsGrouped}"
+                IsGroupingEnabled="True" 
+                HasUnevenRows="True"
+                GroupDisplayBinding="{Binding GroupName}"
+                GroupShortNameBinding="{Binding GroupName}"
+                >
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding Name}" />
+                <Button 
+                  Command="{Binding BindingContext.RemoveItemFromGroupCommand, Source={x:Reference TheMainPage}}"
+                  CommandParameter="{Binding .}"
+                  Text="Remove"
+                  > </Button>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+
+      </ListView>
+      <Label Text="Ungrouped"></Label>
+      <ListView HeightRequest="350" 
+                BackgroundColor="Gray" 
+                ItemsSource="{Binding Items}"
+                HasUnevenRows="True"
+                >
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout Orientation="Horizontal">
+                <Label Text="{Binding Name}" />
+
+
+                <Button 
+                  Command="{Binding BindingContext.RemoveItemCommand, Source={x:Reference TheMainPage}}"
+                  CommandParameter="{Binding .}"
+                  Text="Remove"
+                  ></Button>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+
+      </ListView>
+      <Button Text="AddMore" Command="{Binding AddMoreCommand}"></Button>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>
